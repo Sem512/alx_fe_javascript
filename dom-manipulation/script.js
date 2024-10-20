@@ -92,13 +92,21 @@
     ];
     
   
-    function fetchQuotesFromServer() {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve(serverQuotes);
-        }, 9001);
-      });
-    }
+    const fetchQuotesFromServer = async () => {
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+        if (!response.ok) throw new Error('Failed to fetch quotes from server.');
+        const serverQuotes = await response.json();
+        return serverQuotes.map((quote) => ({
+          text: quote.title, // Simulating quote text from post title
+          category: 'General', // Simulating a default category
+        }));
+      } catch (error) {
+        console.error(error);
+        alert('Error fetching quotes from server!');
+        return [];
+      }
+    };
     
     function postQuoteToServer(newQuote) {
       return new Promise((resolve) => {
