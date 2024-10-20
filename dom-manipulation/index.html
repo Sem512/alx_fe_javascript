@@ -13,9 +13,9 @@
   <button class="newQuote">Show New Quote</button>
 
   <div>
-    <input class="newQuoteText" type="text" placeholder="Enter a new quote" />
-    <input class="newQuoteCategory" type="text" placeholder="Enter quote category" />
-    <button class="addQuote">Add Quote</button>
+    <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
+    <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
+    <button onclick="addQuote()">Add Quote</button>
   </div>
 
   <select class="categoryFilter" onchange="filterQuotes()">

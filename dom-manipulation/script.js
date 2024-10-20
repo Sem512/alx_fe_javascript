@@ -9,25 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const quoteDisplay = document.querySelector('.quoteDisplay');
     const categoryFilter = document.querySelector('.categoryFilter');
     categoryFilter.style.color="red";
-    const quoteButton = document.querySelector('.addQuote');
-    quoteButton.addEventListener("click",addQuote);
-  
-    // Function to show a random quote
+
     function showRandomQuote() {
       const randomIndex = Math.floor(Math.random() * filteredQuotes.length);
       quoteDisplay.textContent = filteredQuotes[randomIndex].text;
     }
   
-    // Function to add a new quote
     function addQuote() {
-      const quoteText = document.querySelector('.newQuoteText').value.trim();
-      const quoteCategory = document.querySelector('.newQuoteCategory').value.trim();
+      const quoteText = document.querySelector('#newQuoteText').value.trim();
+      const quoteCategory = document.querySelector('#newQuoteCategory').value.trim();
 
       
         quotes.push({ text: quoteText, category: quoteCategory });
   
-        document.querySelector('.newQuoteText').value = '';
-        document.querySelector('.newQuoteCategory').value = '';
+        quoteText.value = '';
+        quoteCategory.value = '';
   
       
         populateCategories();
