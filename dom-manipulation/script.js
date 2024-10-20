@@ -143,7 +143,7 @@
         );
   
         saveQuotes(uniqueQuotes);
-        console.log('Quotes synced successfully!');
+        alert("Quotes synced with server!");
         return uniqueQuotes;
       } catch (error) {
         console.error('Error during syncing:', error);
