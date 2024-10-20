@@ -86,3 +86,25 @@
       a.click();
     }
   
+    let serverQuotes = [
+      { text: "Server quote 1", category: "Server Category" },
+      { text: "Server quote 2", category: "Server Category" }
+    ];
+    
+  
+    function fetchServerQuotes() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(serverQuotes);
+        }, 9001);
+      });
+    }
+    
+    function postQuoteToServer(newQuote) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          serverQuotes.push(newQuote);
+          resolve();
+        }, 1000);
+      });
+    }
