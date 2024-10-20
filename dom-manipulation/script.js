@@ -1,6 +1,6 @@
 
     // Array to store quotes
-    let quotes = [
+    let quotes = JSON.parse(localStorage.getItem('quotes')) || [
       { text: "The only limit is your mind.", category: "Inspiration" },
       { text: "Success is not final; failure is not fatal.", category: "Motivation" }
     ];
