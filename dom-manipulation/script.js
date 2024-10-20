@@ -1,5 +1,4 @@
 
-    // Array to store quotes
     let quotes = JSON.parse(localStorage.getItem('quotes')) || [
       { text: "The only limit is your mind.", category: "Inspiration" },
       { text: "Success is not final; failure is not fatal.", category: "Motivation" }
@@ -32,7 +31,6 @@
         alert('Quote added successfully!');
     }
   
-    // Function to populate categories in the filter dropdown
     function populateCategories() {
       const categories = [...new Set(quotes.map(quote => quote.category))];
       categoryFilter.innerHTML = `<option value="all">All Categories</option>`;
@@ -56,7 +54,7 @@
     // Attach event listener to 'Show New Quote' button
     document.getElementById('#newQuote').addEventListener('click', showRandomQuote);
   
-    // Initialize the app by populating categories and showing a random quote
+
     populateCategories();
     filterQuotes();
 
@@ -98,8 +96,8 @@
         if (!response.ok) throw new Error('Failed to fetch quotes from server.');
         const serverQuotes = await response.json();
         return serverQuotes.map((quote) => ({
-          text: quote.title, // Simulating quote text from post title
-          category: 'General', // Simulating a default category
+          text: quote.title,
+          category: 'General',
         }));
       } catch (error) {
         console.error(error);
@@ -116,9 +114,9 @@
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            title: quote.text, // Simulating a quote as title
-            body: quote.category, // Simulating category as body content
-            userId: 1, // Simulated user ID for posting
+            title: quote.text,
+            body: quote.category,
+            userId: 1, 
           }),
         });
   
@@ -151,3 +149,5 @@
         console.error('Error during syncing:', error);
       }
     };
+
+    setInterval(syncQuotes, 3600);
