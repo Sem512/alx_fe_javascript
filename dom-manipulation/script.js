@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   
     function addQuote() {
+      alert("pressed");
       const quoteText = document.querySelector('#newQuoteText').value.trim();
       const quoteCategory = document.querySelector('#newQuoteCategory').value.trim();
 
