@@ -92,7 +92,7 @@
     ];
     
   
-    function fetchQuotesfromServer() {
+    function fetchQuotesFromServer() {
       return new Promise((resolve) => {
         setTimeout(() => {
           resolve(serverQuotes);
