@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Quote Generator</title>
+</head>
+<body>
+  <h1>Dynamic Quote Generator</h1>
+
+  <div class="quoteDisplay"></div>
+
+  <button class="newQuote">Show New Quote</button>
+
+  <div>
+    <input class="newQuoteText" type="text" placeholder="Enter a new quote" />
+    <input class="newQuoteCategory" type="text" placeholder="Enter quote category" />
+    <button class="addQuote">Add Quote</button>
+  </div>
+
+  <select class="categoryFilter" onchange="filterQuotes()">
+    <option value="all">All Categories</option>
+  </select>
+
+  <script src="script.js"></script>
+</body>
+</html>
