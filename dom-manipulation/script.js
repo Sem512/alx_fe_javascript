@@ -1,3 +1,4 @@
+window.addQuote=addQuote;
 document.addEventListener('DOMContentLoaded', () => {
     // Array to store quotes
     let quotes = [
