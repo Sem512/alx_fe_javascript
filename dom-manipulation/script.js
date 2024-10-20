@@ -15,8 +15,7 @@
       quoteDisplay.textContent = filteredQuotes[randomIndex].text;
     }
   
-    function addQuote() {
-      alert("pressed");
+    function createaddQuoteForm() {
       const quoteText = document.querySelector('#newQuoteText').value.trim();
       const quoteCategory = document.querySelector('#newQuoteCategory').value.trim();
 
@@ -60,4 +59,30 @@
     // Initialize the app by populating categories and showing a random quote
     populateCategories();
     filterQuotes();
+
+    function saveQuotes() {
+      localStorage.setItem('quotes', JSON.stringify(quotes));
+    }
+  
+    function importFromJsonFile(event) {
+      const fileReader = new FileReader();
+      fileReader.onload = function(event) {
+        const importedQuotes = JSON.parse(event.target.result);
+        quotes.push(...importedQuotes);
+        saveQuotes();
+        populateCategories();
+        alert('Quotes imported successfully!');
+      };
+      fileReader.readAsText(event.target.files[0]);
+    }
+  
+    function exportToJsonFile() {
+      const dataStr = JSON.stringify(quotes);
+      const dataBlob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(dataBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'quotes.json';
+      a.click();
+    }
   
