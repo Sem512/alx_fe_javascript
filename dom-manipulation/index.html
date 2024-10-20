@@ -7,20 +7,24 @@
 </head>
 <body>
   <h1>Dynamic Quote Generator</h1>
+  <div id="quoteDisplay">Loading quotes...</div>
+  <button id="newQuote">Show New Quote</button>
 
-  <div class="quoteDisplay"></div>
-
-  <button class="newQuote">Show New Quote</button>
-
+  <!-- Input for adding a new quote -->
   <div>
     <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
     <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
     <button onclick="addQuote()">Add Quote</button>
   </div>
 
-  <select class="categoryFilter" onchange="filterQuotes()">
+  <!-- Dropdown for filtering quotes -->
+  <select id="categoryFilter" onchange="filterQuotes()">
     <option value="all">All Categories</option>
   </select>
+
+  <!-- JSON Import/Export -->
+  <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
+  <button onclick="exportToJsonFile()">Export Quotes</button>
 
   <script src="script.js"></script>
 </body>
