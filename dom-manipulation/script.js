@@ -130,3 +130,24 @@
         alert('Error posting quote to the server!');
       }
     };
+
+    const syncQuotes = async () => {
+      try {
+        const localQuotes = getStoredQuotes();
+        const serverQuotes = await fetchQuotesFromServer();
+        
+        // Merge quotes, resolving conflicts (server takes precedence)
+        const mergedQuotes = [...serverQuotes, ...localQuotes];
+        
+        // Remove duplicates by checking if the quote text already exists
+        const uniqueQuotes = mergedQuotes.filter((quote, index, self) =>
+          index === self.findIndex(q => q.text === quote.text)
+        );
+  
+        saveQuotes(uniqueQuotes);
+        console.log('Quotes synced successfully!');
+        return uniqueQuotes;
+      } catch (error) {
+        console.error('Error during syncing:', error);
+      }
+    };
