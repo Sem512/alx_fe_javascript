@@ -54,7 +54,7 @@
     }
   
     // Attach event listener to 'Show New Quote' button
-    document.querySelector('.newQuote').addEventListener('click', showRandomQuote);
+    document.getElementById('#newQuote').addEventListener('click', showRandomQuote);
   
     // Initialize the app by populating categories and showing a random quote
     populateCategories();
