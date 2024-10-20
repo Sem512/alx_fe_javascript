@@ -15,7 +15,7 @@
       quoteDisplay.textContent = filteredQuotes[randomIndex].text;
     }
   
-    function createaddQuoteForm() {
+    function createAddQuoteForm() {
       const quoteText = document.querySelector('#newQuoteText').value.trim();
       const quoteCategory = document.querySelector('#newQuoteCategory').value.trim();
 
