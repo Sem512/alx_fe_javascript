@@ -108,11 +108,25 @@
       }
     };
     
-    function postQuoteToServer(newQuote) {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          serverQuotes.push(newQuote);
-          resolve();
-        }, 1000);
-      });
-    }
+    const postQuoteToServer = async (quote) => {
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            title: quote.text, // Simulating a quote as title
+            body: quote.category, // Simulating category as body content
+            userId: 1, // Simulated user ID for posting
+          }),
+        });
+  
+        if (!response.ok) throw new Error('Failed to post new quote to server.');
+        const postedQuote = await response.json();
+        console.log('Quote successfully posted:', postedQuote);
+      } catch (error) {
+        console.error(error);
+        alert('Error posting quote to the server!');
+      }
+    };
